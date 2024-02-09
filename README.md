@@ -38,8 +38,18 @@ Ce petit **script R** permet de préparer le fichier de données brutes (JSON) p
 install.packages("jsonlite")
 install.packages("tidyverse")
 
+# install.packages("devtools")
+devtools::install_github("r-lib/conflicted")
+
 library(jsonlite)
 library(tidyverse)
+
+library(conflicted)
+library(dplyr)
+
+conflicts_prefer(dplyr::filter)
+conflicts_prefer(dplyr::lag)
+conflicts_prefer(jsonlite::flatten)
 
 
 #Importer le fichier json fournit par Google
